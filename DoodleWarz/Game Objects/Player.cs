@@ -22,6 +22,11 @@ namespace DoodleWarz
         private int _power = 0;
         private float _speed = 0;
 
+        Point[] _frameOrder = new Point[] { new Point(1, 1), new Point(2, 1), new Point(2, 2), new Point(0, 2) };
+        private int _frameIndex = 0;
+        private float millisecondsPerFrame = 250;
+        private float timeSinceLastFrame = 0;
+
         public Player(PlayerIndex playerIndex)
         {
             this._playerIndex = playerIndex;
@@ -35,11 +40,16 @@ namespace DoodleWarz
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(this._texture, this._position, Color.Yellow);
+            //spriteBatch.Draw(this._texture, this._position, Color.Yellow);
+            spriteBatch.Draw(_texture,
+                new Rectangle((int)_position.X,(int)_position.Y, 200, 200),
+                new Rectangle(_frameOrder[_frameIndex].X * 400, _frameOrder[_frameIndex].Y * 400, 400, 400),
+                Color.Orange);
         }
 
         public void Update(KeyboardState oldState, KeyboardState newState, GameTime gameTime)
         {
+            #region Check Player Movement
             float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 movement = delta * _baseVelocity * (_speed/20 + 1);
 
@@ -49,7 +59,6 @@ namespace DoodleWarz
             {
                 Game1.PauseGame(_controls.pause);
             }
-            #region Check Player Movement
             if (newState.IsKeyDown(_controls.moveUp))
             {
                 moveDirection += new Vector2(0f, -1f);
@@ -77,6 +86,21 @@ namespace DoodleWarz
             Vector2 FinalV = movement * moveDirection;
             Move(movement * moveDirection);
             #endregion
+
+            //update frame animation
+            timeSinceLastFrame += (float)gameTime.ElapsedGameTime.Milliseconds;
+            if (timeSinceLastFrame >= millisecondsPerFrame)
+            {
+                _frameIndex++;
+                if (_frameIndex > _frameOrder.Length - 1)
+                {
+                    _frameIndex = 0;
+                }
+                timeSinceLastFrame = 0f;
+            }
+
+
+
         }
 
         public void InitializeControls()

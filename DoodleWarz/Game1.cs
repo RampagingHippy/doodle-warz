@@ -76,7 +76,7 @@ namespace DoodleWarz
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _spriteFont = Content.Load<SpriteFont>("Fonts/InGame");
 
-            _playerOne.LoadContent(Content, "Textures/Ball");
+            _playerOne.LoadContent(Content, "Textures/Doodle_Dragon");
             ItemManager.LoadContent(Content, "Textures/Item");
         }
 
