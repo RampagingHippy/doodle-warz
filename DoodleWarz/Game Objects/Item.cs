@@ -74,10 +74,12 @@ namespace DoodleWarz
                 return false;
         }
 
-
+        //event where player collects item
+        //return item type for player to update
         public ItemType playerCollision()
         {
             _isActive = false;
+            _timer = RESPAWN_TIME;
             _position = new Vector2((float)_randPosition.Next(Game1.screenWidth - TEXTURE_WIDTH),
                 (float)_randPosition.Next(Game1.screenHeight - TEXTURE_HEIGHT));
             return _type;
