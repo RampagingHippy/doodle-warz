@@ -15,7 +15,7 @@ namespace DoodleWarz
         private bool _isActive = false;
         private ItemType _type;
         private float _timer = 10;
-        private const float RESPAWN_TIME = 1;
+        private const float RESPAWN_TIME = 5;
         private const int TEXTURE_WIDTH = 20;
         private const int TEXTURE_HEIGHT = 20;
         private static Random _randPosition = new Random();
