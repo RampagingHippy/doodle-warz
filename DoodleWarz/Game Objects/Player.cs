@@ -42,7 +42,7 @@ namespace DoodleWarz
         {
             //spriteBatch.Draw(this._texture, this._position, Color.Yellow);
             spriteBatch.Draw(_texture,
-                new Rectangle((int)_position.X,(int)_position.Y, 200, 200),
+                new Rectangle((int)_position.X,(int)_position.Y, 100, 100),
                 new Rectangle(_frameOrder[_frameIndex].X * 400, _frameOrder[_frameIndex].Y * 400, 400, 400),
                 Color.Orange);
         }
