@@ -26,6 +26,8 @@ namespace DoodleWarz
         private int _frameIndex = 0;
         private float millisecondsPerFrame = 250;
         private float timeSinceLastFrame = 0;
+        private const int SPRITE_WIDTH = 200;
+        private const int SPRITE_HEIGHT = 200;
 
         public Player(PlayerIndex playerIndex)
         {
@@ -42,9 +44,17 @@ namespace DoodleWarz
         {
             //spriteBatch.Draw(this._texture, this._position, Color.Yellow);
             spriteBatch.Draw(_texture,
-                new Rectangle((int)_position.X,(int)_position.Y, 200, 200),
+                new Rectangle((int)_position.X,(int)_position.Y, SPRITE_WIDTH, SPRITE_HEIGHT),
                 new Rectangle(_frameOrder[_frameIndex].X * 400, _frameOrder[_frameIndex].Y * 400, 400, 400),
                 Color.Orange);
+        }
+
+        protected override Rectangle _bounds
+        {
+            get
+            {
+              return new Rectangle((int)_position.X, (int)_position.Y, SPRITE_WIDTH, SPRITE_HEIGHT);
+            }
         }
 
         public void Update(KeyboardState oldState, KeyboardState newState, GameTime gameTime)
@@ -98,9 +108,6 @@ namespace DoodleWarz
                 }
                 timeSinceLastFrame = 0f;
             }
-
-
-
         }
 
         public void InitializeControls()
