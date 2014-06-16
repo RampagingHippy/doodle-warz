@@ -97,7 +97,8 @@ namespace DoodleWarz
         {
             _currentState = Keyboard.GetState();
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || _currentState.IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
+                _currentState.IsKeyDown(Keys.Escape))
                 Exit();
 
             switch (_gameState)
@@ -105,6 +106,7 @@ namespace DoodleWarz
                 case GameState.Playing:
                     #region Main Game Loop
                 {
+                    //update players,items, etc.
                     _currentState = Keyboard.GetState();   
                     _playerOne.Update(_oldState, _currentState, gameTime);
                     ItemManager.Update(gameTime);
@@ -160,6 +162,8 @@ namespace DoodleWarz
         }
 
         //toggles pause state
+        //saves pause key to local var
+        //to prevent other players from unpausing
         public static void PauseGame(Keys playerPauseKey)
         {
             _pauseKey = playerPauseKey;

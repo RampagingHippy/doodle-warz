@@ -72,7 +72,8 @@ namespace DoodleWarz
                 return base.Collides(gameObject);
             else
                 return false;
-        }
+        }
+
 
         public ItemType playerCollision()
         {

@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DoodleWarz
 {
+    //All the actions a player may take
+    //each tied to a key or gamepad button
+    //for use by players for reading inputs
     public struct PlayerActionStruct
     {
         public Keys moveUp;

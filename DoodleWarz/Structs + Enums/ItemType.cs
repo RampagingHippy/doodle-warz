@@ -5,6 +5,9 @@ using System.Text;
 
 namespace DoodleWarz
 {
+
+    //All of the possible types an individual
+    //item may have
     public enum ItemType
     {
         Health,

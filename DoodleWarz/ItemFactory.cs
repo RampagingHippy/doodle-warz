@@ -11,9 +11,9 @@ namespace DoodleWarz
     {
         private static Color[] _colorList = new Color[3]
         {
-            Color.White,
-            Color.Red,
-            Color.Blue
+            Color.White, //Health
+            Color.Red, //Speed
+            Color.Orange //Power
         };
 
         public ItemFactory() { }
