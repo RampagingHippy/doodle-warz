@@ -26,8 +26,8 @@ namespace DoodleWarz
         private int _frameIndex = 0;
         private float millisecondsPerFrame = 250;
         private float timeSinceLastFrame = 0;
-        private const int SPRITE_WIDTH = 200;
-        private const int SPRITE_HEIGHT = 200;
+        private const int SPRITE_WIDTH = 100;
+        private const int SPRITE_HEIGHT = 100;
 
         public Player(PlayerIndex playerIndex)
         {
