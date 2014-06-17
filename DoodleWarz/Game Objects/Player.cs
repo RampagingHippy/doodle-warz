@@ -26,8 +26,10 @@ namespace DoodleWarz
         private int _frameIndex = 0;
         private float millisecondsPerFrame = 250;
         private float timeSinceLastFrame = 0;
-        private const int SPRITE_WIDTH = 200;
-        private const int SPRITE_HEIGHT = 200;
+        private const int SPRITE_WIDTH = 150;
+        private const int SPRITE_HEIGHT = 150;
+        private const int SOURCE_WIDTH = 400;
+        private const int SOURCE_HEIGHT = 400;
 
         public Player(PlayerIndex playerIndex)
         {
@@ -45,7 +47,7 @@ namespace DoodleWarz
             //spriteBatch.Draw(this._texture, this._position, Color.Yellow);
             spriteBatch.Draw(_texture,
                 new Rectangle((int)_position.X,(int)_position.Y, SPRITE_WIDTH, SPRITE_HEIGHT),
-                new Rectangle(_frameOrder[_frameIndex].X * 400, _frameOrder[_frameIndex].Y * 400, 400, 400),
+                new Rectangle(_frameOrder[_frameIndex].X * SOURCE_WIDTH, _frameOrder[_frameIndex].Y * SOURCE_HEIGHT, SOURCE_WIDTH, SOURCE_HEIGHT),
                 Color.Orange);
         }
 
