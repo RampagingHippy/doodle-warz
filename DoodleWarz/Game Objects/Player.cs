@@ -16,13 +16,15 @@ namespace DoodleWarz
 
         private GameTime _prevTime = new GameTime();
         private PlayerIndex _playerIndex;
-        private PlayerActionStruct _controls;
+        private PlayerControls _controls;
+        private PlayerState _playerState;
 
         private int _health = 10;
         private int _power = 0;
         private float _speed = 0;
 
-        Point[] _frameOrder = new Point[] { new Point(1, 1), new Point(2, 1), new Point(2, 2), new Point(0, 2) };
+
+        Point[] _frameOrder = new Point[] { new Point(3, 0), new Point(2, 0), new Point(1, 0), new Point(0, 0)  };
         private int _frameIndex = 0;
         private float millisecondsPerFrame = 250;
         private float timeSinceLastFrame = 0;
@@ -118,21 +120,23 @@ namespace DoodleWarz
             {
                 case PlayerIndex.One:
                 {
-                        _controls.moveUp = Keys.W;
-                        _controls.moveDown = Keys.S;
-                        _controls.moveLeft = Keys.A;
-                        _controls.moveRight = Keys.D;
-                        _controls.pause = Keys.Back;
-                        break;
+                    _controls.moveUp = Keys.W;
+                    _controls.moveDown = Keys.S;
+                    _controls.moveLeft = Keys.A;
+                    _controls.moveRight = Keys.D;
+                    _controls.pause = Keys.Back;
+                    _controls.attack = Keys.E;
+                    break;
                 }
                 case PlayerIndex.Two:
                 {
-                        _controls.moveUp = Keys.Up;
-                        _controls.moveDown = Keys.Down;
-                        _controls.moveLeft = Keys.Left;
-                        _controls.moveRight = Keys.Right;
-                        _controls.pause = Keys.RightShift;
-                        break;
+                    _controls.moveUp = Keys.Up;
+                    _controls.moveDown = Keys.Down;
+                    _controls.moveLeft = Keys.Left;
+                    _controls.moveRight = Keys.Right;
+                    _controls.pause = Keys.RightShift;
+                    _controls.attack = Keys.E;
+                    break;
                 }
             }
         }
@@ -161,4 +165,14 @@ namespace DoodleWarz
             }
         }
     }
+
+    private enum PlayerState
+    {
+        WalkUp,
+        WalkDown,
+        WalkLeft,
+        WalkRight,
+        Attack,
+        Dead
+    };
 }
